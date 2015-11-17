@@ -368,6 +368,9 @@ namespace Energine\share\gears {
             $const = strtoupper($const);
             if (is_null($langId)) {
                 $langId = intval(E()->getLanguage()->getCurrent());
+                if (!$langId) {
+                    $langId = E()->getLanguage()->getDefault();
+                }
             }
             $result = $const;
 
