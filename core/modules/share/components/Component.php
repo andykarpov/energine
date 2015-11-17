@@ -44,8 +44,8 @@ interface IBuilder {
 
 /**
  * Page component.
- * @method string translate() translate(string $string, int $langID = null)
- * @method string dateToString() dateToString(int $year, int $month, int $day)
+ * @method string translate() translate($string, $langID = null)
+ * @method string dateToString() dateToString($year, $month, $day)
  * @code
 class Component;
  * @endcode

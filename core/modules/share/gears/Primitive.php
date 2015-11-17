@@ -26,7 +26,7 @@ abstract class Primitive
  * - parse and process the configuration file.
  *
  * @abstract
- * @method static mixed getConfigValue(string $paramPath, mixed $initial)
+ * @method static mixed getConfigValue($paramPath, $initial)
  */
 namespace Energine\share\gears;
 
