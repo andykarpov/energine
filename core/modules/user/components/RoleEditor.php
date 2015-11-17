@@ -207,7 +207,8 @@ class RoleEditor extends Grid {
      */
     // При удалении происходит проверка не удаляется ли дефолтная группа
     protected function deleteData($id) {
-        if (!empty($this->dbh->select($this->getTableName(), 'group_id', ['group_id' => $id, 'group_default' => true]))) {
+        $default_group = $this->dbh->select($this->getTableName(), 'group_id', ['group_id' => $id, 'group_default' => true]);
+        if (!empty($default_group)) {
             throw new SystemException('ERR_DEFAULT_GROUP', SystemException::ERR_NOTICE);
         }
         parent::deleteData($id);
