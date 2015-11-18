@@ -35,6 +35,19 @@ namespace Energine\share\gears {
         }
     }
 
+    if (!function_exists('password_verify')) {
+        function password_verify($password, $hash) {
+            return hash_equals($hash, crypt($password, $hash));
+        }
+    }
+
+    if (!function_exists('password_hash')) {
+        function password_hash($password, $algo = PASSWORD_DEFAULT, $options = []) {
+            return crypt($password);
+        }
+    }
+
+
     /**
      * Class Utils
      * @package Energine\share\gears
