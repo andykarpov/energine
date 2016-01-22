@@ -8,6 +8,10 @@
  */
 namespace Energine\share\gears {
 
+    if (!defined('PASSWORD_DEFAULT')) {
+        define("PASSWORD_DEFAULT", 1);
+    }
+
     if(!function_exists("array_column"))
     {
         function array_column($array, $column_key, $index_key = null)
@@ -59,7 +63,6 @@ namespace Energine\share\gears {
             }
         }
     }
-
 
     /**
      * Class Utils
