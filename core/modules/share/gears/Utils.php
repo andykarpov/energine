@@ -8,62 +8,6 @@
  */
 namespace Energine\share\gears {
 
-    if (!defined('PASSWORD_DEFAULT')) {
-        define("PASSWORD_DEFAULT", 1);
-    }
-
-    if(!function_exists("array_column"))
-    {
-        function array_column($array, $column_key, $index_key = null)
-        {
-            $result = [];
-            foreach($array as $arr){
-                if(!is_array($arr)) continue;
-
-                if(is_null($column_key)){
-                    $value = $arr;
-                }else{
-                    $value = $arr[$column_key];
-                }
-
-                if(!is_null($index_key)){
-                    $key = $arr[$index_key];
-                    $result[$key] = $value;
-                }else{
-                    $result[] = $value;
-                }
-
-            }
-
-            return $result;
-        }
-    }
-
-    if (!function_exists('password_verify')) {
-        function password_verify($password, $hash) {
-            return hash_equals($hash, crypt($password, $hash));
-        }
-    }
-
-    if (!function_exists('password_hash')) {
-        function password_hash($password, $algo = PASSWORD_DEFAULT, $options = []) {
-            return crypt($password);
-        }
-    }
-
-    if(!function_exists('hash_equals')) {
-        function hash_equals($str1, $str2) {
-            if(strlen($str1) != strlen($str2)) {
-                return false;
-            } else {
-                $res = $str1 ^ $str2;
-                $ret = 0;
-                for($i = strlen($res) - 1; $i >= 0; $i--) $ret |= ord($res[$i]);
-                return !$ret;
-            }
-        }
-    }
-
     /**
      * Class Utils
      * @package Energine\share\gears
@@ -536,6 +480,65 @@ namespace Energine\share\gears {
 }
 
 namespace {
+
+    // PHP 5.4 backported functions
+
+    if (!defined('PASSWORD_DEFAULT')) {
+        define("PASSWORD_DEFAULT", 1);
+    }
+
+    if(!function_exists("array_column"))
+    {
+        function array_column($array, $column_key, $index_key = null)
+        {
+            $result = [];
+            foreach($array as $arr){
+                if(!is_array($arr)) continue;
+
+                if(is_null($column_key)){
+                    $value = $arr;
+                }else{
+                    $value = $arr[$column_key];
+                }
+
+                if(!is_null($index_key)){
+                    $key = $arr[$index_key];
+                    $result[$key] = $value;
+                }else{
+                    $result[] = $value;
+                }
+
+            }
+
+            return $result;
+        }
+    }
+
+    if (!function_exists('password_verify')) {
+        function password_verify($password, $hash) {
+            return hash_equals($hash, crypt($password, $hash));
+        }
+    }
+
+    if (!function_exists('password_hash')) {
+        function password_hash($password, $algo = PASSWORD_DEFAULT, $options = []) {
+            return crypt($password);
+        }
+    }
+
+    if(!function_exists('hash_equals')) {
+        function hash_equals($str1, $str2) {
+            if(strlen($str1) != strlen($str2)) {
+                return false;
+            } else {
+                $res = $str1 ^ $str2;
+                $ret = 0;
+                for($i = strlen($res) - 1; $i >= 0; $i--) $ret |= ord($res[$i]);
+                return !$ret;
+            }
+        }
+    }
+
     /**
      * @fn inspect()
      * @brief Inspect variables.
