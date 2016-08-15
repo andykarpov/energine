@@ -146,8 +146,8 @@ class DocumentController extends Primitive {
                 /**
                  * Errors 404 & 403 goes here
                  */
-                $document =E()->getDocument();
-                //$document = new Document();
+                //$document =E()->getDocument();
+                $document = new Document();
 
                 $document->loadComponents(function () use ($e){
                     if (
